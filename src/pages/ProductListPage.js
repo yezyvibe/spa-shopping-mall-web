@@ -2,12 +2,12 @@ import ProductList from "../components/ProductList.js";
 import { request } from "../utils/api.js";
 
 export default function ProductListPage({ $target }) {
-  const $component = document.createElement("div");
-  $component.className = "ProductListPage";
-  $target.appendChild($component);
+  const $page = document.createElement("div");
+  $page.className = "ProductListPage";
+  $target.appendChild($page);
 
   this.render = () => {
-    $component.innerHTML = `
+    $page.innerHTML = `
       <h1>상품목록</h1>
     `;
   };
@@ -21,7 +21,7 @@ export default function ProductListPage({ $target }) {
     if (result.length > 0) {
       this.setState(result);
       new ProductList({
-        $target: $component,
+        $target: $page,
         initialState: result,
       });
     }

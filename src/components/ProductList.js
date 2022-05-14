@@ -1,3 +1,5 @@
+import { routeChange } from "../utils/router.js";
+
 export default function ProductList({ $target, initialState }) {
   this.state = initialState;
   const $component = document.createElement("ul");
@@ -21,4 +23,12 @@ export default function ProductList({ $target, initialState }) {
     `;
   };
   this.render();
+
+  $component.addEventListener("click", (e) => {
+    const $li = e.target.closest("li");
+    const { productId } = $li.dataset;
+    if (productId) {
+      routeChange(`/web/products/${productId}`);
+    }
+  });
 }
